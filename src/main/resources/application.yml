@@ -6,3 +6,17 @@ spring:
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
+  graphql:
+    graphiql:
+      enabled: true
+
+  #JPA/Hibernate Configurations
+  jpa:
+    hibernate:
+      ddl-auto: update   # Controls schema generation, can be 'none', 'update', 'create', 'create-drop'
+    show-sql: true       # Shows generated SQL queries in logs
+
+
+logging:
+  level:
+    sql: TRACE
