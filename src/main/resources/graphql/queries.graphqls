@@ -1,0 +1,15 @@
+# User Queries
+type Query {
+    getUser(id: UUID!): User
+    getUserByEmail(email: String!): User
+    getUserByPhoneNo(phoneNo: String!): User
+    getAllUsers: [User]
+
+    # Meal Queries
+    getMeal(id: UUID!): Meal
+    getAllMeals: [Meal]
+
+    # Meal Plan Queries
+    getMealPlan(id: UUID!): MealPlan
+    getAllMealPlans: [MealPlan]
+}

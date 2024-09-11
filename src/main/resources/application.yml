@@ -1,6 +1,6 @@
 spring:
   application:
-    name: graphql-with-db
+    name: graphql-diet-api
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres

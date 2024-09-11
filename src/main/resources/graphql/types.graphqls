@@ -1,0 +1,68 @@
+#scalers
+scalar UUID
+scalar Date
+scalar DateTime
+
+# User Types
+type User {
+    id: UUID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+    phoneNo: String
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+# Meal Types
+type Meal {
+    id: UUID!
+    name: String!
+    description: String
+    calories: Int
+    protein: Float
+    carbs: Float
+    fats: Float
+    ingredients: [Ingredient]
+    instructions: [Instruction]
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type Ingredient {
+    id: UUID!
+    name: String!
+    quantity: String!
+}
+
+type Instruction {
+    id: UUID!
+    stepNumber: Int!
+    description: String!
+}
+
+# Meal Plan Types
+type MealPlan {
+    id: UUID!
+    userId: UUID!
+    weekStartDate: Date!
+    weekEndDate: Date!
+    dailyMeals: [DayMeal]
+}
+
+type DayMeal {
+    day: Day!
+    mealCount: Int!
+    meals: [Meal]
+}
+
+enum Day {
+    MONDAY
+    TUESDAY
+    WEDNESDAY
+    THURSDAY
+    FRIDAY
+    SATURDAY
+    SUNDAY
+}

@@ -1,0 +1,8 @@
+package com.mmdt.graphqlapi.exceptions;
+
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message) {
+        super(message);
+    }
+}
+

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rajib.graphql</groupId>
-	<artifactId>graphql-with-db</artifactId>
+	<artifactId>graphql-diet-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>graphql-with-db</name>
+	<name>graphql-diet-api</name>
 	<description>project with graphql,jpa, postgress DB for creating API</description>
 	<url/>
 	<licenses>

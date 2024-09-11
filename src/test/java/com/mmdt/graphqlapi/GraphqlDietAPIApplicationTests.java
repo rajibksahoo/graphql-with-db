@@ -1,10 +1,10 @@
-package com.rajib.graphql.graphql_with_db;
+package com.mmdt.graphqlapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GraphqlWithDbApplicationTests {
+class GraphqlDietAPIApplicationTests {
 
 	@Test
 	void contextLoads() {

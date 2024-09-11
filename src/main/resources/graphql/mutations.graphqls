@@ -1,0 +1,16 @@
+# User Mutations
+type Mutation {
+    createUser(input: CreateUserInput!): User
+    updateUser(id: UUID!, input: UpdateUserInput!): User
+    deleteUser(id: UUID!): Boolean
+
+    # Meal Mutations
+    createMeal(input: CreateMealInput!): Meal
+    updateMeal(id: UUID!, input: UpdateMealInput!): Meal
+    deleteMeal(id: UUID!): Boolean
+
+    # Meal Plan Mutations
+    createMealPlan(input: CreateMealPlanInput!): MealPlan
+    updateMealPlan(id: UUID!, input: CreateMealPlanInput!): MealPlan
+    deleteMealPlan(id: UUID!): Boolean
+}

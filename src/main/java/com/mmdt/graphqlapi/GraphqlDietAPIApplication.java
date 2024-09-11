@@ -1,13 +1,13 @@
-package com.rajib.graphql.graphql_with_db;
+package com.mmdt.graphqlapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GraphqlWithDbApplication {
+public class GraphqlDietAPIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GraphqlWithDbApplication.class, args);
+		SpringApplication.run(GraphqlDietAPIApplication.class, args);
 	}
 
 }
