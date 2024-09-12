@@ -1,10 +1,8 @@
+/*
 package com.mmdt.graphqlapi.entities;
 
 import com.mmdt.graphqlapi.enums.Day;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +20,8 @@ public class DayMeal {
 
     private int mealCount;
 
-    @ManyToMany
+    //@ManyToMany
+    @ElementCollection
     private List<Meal> meals;
 }
+*/

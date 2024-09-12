@@ -1,37 +1,62 @@
 package com.mmdt.graphqlapi.services;
 
 import com.mmdt.graphqlapi.entities.User;
-import com.mmdt.graphqlapi.helper.ExceptionHelper;
+import com.mmdt.graphqlapi.exceptions.ResourceNotFoundException;
 import com.mmdt.graphqlapi.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Service
 public class UserService {
-    private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    public User getUserById(UUID id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
     }
-    //create a user
-    public User createUser(User user){
-      return userRepository.save(user);
-    }
-    //get all user
-    public List<User> getAllUsers(){
+
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-    //get single user
-    public User getUser(UUID userId){
-         return userRepository.findById(userId).orElseThrow(ExceptionHelper::throwResourceNotFoundException);
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User with email " + email + " not found"));
     }
-    //update user
-    //delete user
-    public boolean deleteUser(UUID userId){
-        User user = userRepository.findById(userId).orElseThrow(ExceptionHelper::throwResourceNotFoundException);
+
+    public User getUserByPhoneNo(String phoneNo) {
+        return userRepository.findByPhoneNo(phoneNo)
+                .orElseThrow(() -> new ResourceNotFoundException("User with phone number " + phoneNo + " not found"));
+    }
+
+    public User createUser(User input) {
+        return userRepository.save(input);
+    }
+
+    public User updateUser(UUID id, User input) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
+        if (input.getFirstName() != null) user.setFirstName(input.getFirstName());
+        if (input.getLastName() != null) user.setLastName(input.getLastName());
+        if (input.getEmail() != null) user.setEmail(input.getEmail());
+        if (input.getPassword() != null) user.setPassword(input.getPassword());
+        if (input.getPhoneNo() != null) user.setPhoneNo(input.getPhoneNo());
+        user.setUpdatedAt(LocalDateTime.now());
+        return userRepository.save(user);
+    }
+
+    public boolean deleteUser(UUID id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
         userRepository.delete(user);
         return true;
     }
 }
+

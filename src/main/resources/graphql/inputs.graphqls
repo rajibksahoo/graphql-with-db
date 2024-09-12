@@ -1,5 +1,5 @@
 # User Inputs
-input CreateUserInput {
+input UserInput {
     firstName: String!
     lastName: String!
     email: String!
@@ -7,56 +7,37 @@ input CreateUserInput {
     phoneNo: String
 }
 
-input UpdateUserInput {
-    firstName: String
-    lastName: String
-    email: String
-    password: String
-    phoneNo: String
-}
-
 # Meal Inputs
-input CreateMealInput {
+input MealInput {
     name: String!
     description: String
     calories: Int
     protein: Float
     carbs: Float
     fats: Float
-    ingredients: [CreateIngredientInput!]!
-    instructions: [CreateInstructionInput!]!
+    ingredients: [IngredientInput!]!
+    instructions: [InstructionInput!]!
 }
 
-input UpdateMealInput {
-    name: String
-    description: String
-    calories: Int
-    protein: Float
-    carbs: Float
-    fats: Float
-    ingredients: [CreateIngredientInput!]
-    instructions: [CreateInstructionInput!]
-}
-
-input CreateIngredientInput {
+input IngredientInput {
     name: String!
     quantity: String!
 }
 
-input CreateInstructionInput {
+input InstructionInput {
     stepNumber: Int!
     description: String!
 }
 
 # Meal Plan Inputs
-input CreateMealPlanInput {
+input MealPlanInput {
     userId: UUID!
     weekStartDate: Date!
     weekEndDate: Date!
-    dailyMeals: [CreateDayMealInput!]!
+    dailyMeals: [DayMealInput!]!
 }
 
-input CreateDayMealInput {
+input DayMealInput {
     day: Day!
     mealCount: Int!
     meals: [UUID!]!

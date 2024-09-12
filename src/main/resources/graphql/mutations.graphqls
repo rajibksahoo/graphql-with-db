@@ -1,16 +1,16 @@
 # User Mutations
 type Mutation {
-    createUser(input: CreateUserInput!): User
-    updateUser(id: UUID!, input: UpdateUserInput!): User
+    createUser(input: UserInput!): User
+    updateUser(id: UUID!, input: UserInput!): User
     deleteUser(id: UUID!): Boolean
 
     # Meal Mutations
-    createMeal(input: CreateMealInput!): Meal
-    updateMeal(id: UUID!, input: UpdateMealInput!): Meal
+    createMeal(input: MealInput!): Meal
+    updateMeal(id: UUID!, input: MealInput!): Meal
     deleteMeal(id: UUID!): Boolean
 
     # Meal Plan Mutations
-    createMealPlan(input: CreateMealPlanInput!): MealPlan
-    updateMealPlan(id: UUID!, input: CreateMealPlanInput!): MealPlan
+    createMealPlan(input: MealPlanInput!): MealPlan
+    updateMealPlan(id: UUID!, input: MealPlanInput!): MealPlan
     deleteMealPlan(id: UUID!): Boolean
 }
