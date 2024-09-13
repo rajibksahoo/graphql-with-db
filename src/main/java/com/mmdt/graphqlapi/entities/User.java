@@ -1,9 +1,6 @@
 package com.mmdt.graphqlapi.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +24,20 @@ public class User {
     private String phoneNo;
     private String password;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    @Column(updatable = false) // Prevent updates to createdAt
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(nullable = false) // Ensure updatedAt is always present
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+
+    }
 }

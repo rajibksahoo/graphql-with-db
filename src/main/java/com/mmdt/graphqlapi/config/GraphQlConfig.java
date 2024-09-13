@@ -15,6 +15,5 @@ public class GraphQlConfig {
                 .scalar(ExtendedScalars.UUID)
                 .scalar(ExtendedScalars.Date)
                 .scalar(ExtendedScalars.DateTime);
-
     }
 }

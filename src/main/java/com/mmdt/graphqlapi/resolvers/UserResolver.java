@@ -1,25 +1,29 @@
-package com.mmdt.graphqlapi.resolvers.queries;
+package com.mmdt.graphqlapi.resolvers;
 
+import com.mmdt.graphqlapi.dtos.UserInput;
 import com.mmdt.graphqlapi.entities.User;
+import com.mmdt.graphqlapi.mapper.graphql.InputMapper;
 import com.mmdt.graphqlapi.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.UUID;
 
-@Component
+@Controller
+@RequiredArgsConstructor
 public class UserResolver {
 
-    @Autowired
-    private UserService userService;
+    private  final UserService userService;
+    private final InputMapper inputMapper;
+
 
     @MutationMapping
-    public User createUser(@Argument User input) {
-        return userService.createUser(input);
+    public User createUser(@Argument UserInput input) {
+        return userService.createUser(inputMapper.toEntity(input));
     }
 
     @MutationMapping
