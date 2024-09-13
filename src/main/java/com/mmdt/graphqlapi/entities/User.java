@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -25,19 +25,19 @@ public class User {
     private String password;
 
     @Column(updatable = false) // Prevent updates to createdAt
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private  OffsetDateTime createdAt = OffsetDateTime.now();
 
     @Column(nullable = false) // Ensure updatedAt is always present
-    private LocalDateTime updatedAt = LocalDateTime.now();
+    private OffsetDateTime updatedAt = OffsetDateTime.now();
 
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
+        createdAt = OffsetDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = LocalDateTime.now();
+        updatedAt = OffsetDateTime.now();
 
     }
 }
