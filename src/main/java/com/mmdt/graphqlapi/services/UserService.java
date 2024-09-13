@@ -5,6 +5,7 @@ import com.mmdt.graphqlapi.exceptions.ResourceNotFoundException;
 import com.mmdt.graphqlapi.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -48,7 +49,7 @@ public class UserService {
         if (input.getEmail() != null) user.setEmail(input.getEmail());
         if (input.getPassword() != null) user.setPassword(input.getPassword());
         if (input.getPhoneNo() != null) user.setPhoneNo(input.getPhoneNo());
-        user.setUpdatedAt(OffsetDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
         return userRepository.save(user);
     }
 
