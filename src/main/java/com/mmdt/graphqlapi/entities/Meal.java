@@ -32,7 +32,21 @@ public class Meal {
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL)
     private List<Instruction> instructions;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    @Column(updatable = false) // Prevent updates to createdAt
+    private  LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(nullable = false) // Ensure updatedAt is always present
+    private LocalDateTime updatedAt = LocalDateTime.now();
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+
+    }
 }
 

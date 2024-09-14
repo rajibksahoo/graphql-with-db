@@ -27,8 +27,8 @@ type Meal {
     fats: Float
     ingredients: [Ingredient]
     instructions: [Instruction]
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: LocalDateTime!
+    updatedAt: LocalDateTime!
 }
 
 type Ingredient {
