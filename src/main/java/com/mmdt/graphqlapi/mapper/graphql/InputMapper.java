@@ -11,4 +11,6 @@ public interface InputMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     User toEntity(UserInput userInput);
+
+
 }
