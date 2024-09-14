@@ -27,8 +27,8 @@ public class UserResolver {
     }
 
     @MutationMapping
-    public User updateUser(@Argument UUID id, @Argument User input) {
-        return userService.updateUser(id, input);
+    public User updateUser(@Argument UUID id, @Argument UserInput input) {
+        return userService.updateUser(id, inputMapper.toEntity(input));
     }
 
     @MutationMapping
